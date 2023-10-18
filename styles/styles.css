@@ -12,9 +12,95 @@ body {
   font-family: var(--font-family);
 }
 
-#randomCats, #favoriteCats {
+p {
+  font-weight: 300;
+}
+
+.randomCatsContainer {
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+}
+
+.randomCatsContent {
+  max-width: 1280px;
+  min-width: 288px;
+  width: 100%;
+  padding: 20px;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  border-bottom: 1px solid rgb(212, 212, 212);
+  margin-bottom: 30px;
+}
+
+ul li {
+  padding: 20px;
+}
+
+ul li:first-child {
+  color: rgb(197, 88, 88);
+}
+
+article {
+  position: relative;
+}
+
+.options {
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  transition: display 2s ease-in-out;
+}
+
+article:hover .options {
+  display: flex;
+}
+
+.options button {
+  cursor: pointer;
+}
+
+article img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+#randomCats, #favoriteCats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+@media (max-width: 900px) {
+  #randomCats, #favoriteCats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  article img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 450px) {
+
+  #randomCats,
+  #favoriteCats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  article img {
+    height: 160px;
+  }
 }

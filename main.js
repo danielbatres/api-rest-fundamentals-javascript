@@ -16,5 +16,18 @@ async function loadFavoriteCats() {
   loadData(favoriteCatsReference, data, true);
 }
 
-loadRandomCats();
-loadFavoriteCats();
+async function uploadPhoto() {
+  const formData = new FormData(form);
+
+  console.log(formData.get('file'));
+}
+
+async function main() {
+  const uploadButton = document.getElementById('upload');
+  uploadButton.onclick = () => uploadPhoto();
+
+  await loadRandomCats();
+  await loadFavoriteCats();
+}
+
+main();

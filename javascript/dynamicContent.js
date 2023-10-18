@@ -11,9 +11,11 @@ function addCatImage(reference, sourceImage, imageId, isFavorite) {
   const catImage = document.createElement("img");
   catImage.alt = "Random cat picture";
   catImage.src = sourceImage;
-  catImage.width = 250;
 
   catArticle.appendChild(catImage);
+
+  const options = document.createElement('div');
+  options.className = 'options';
 
   if (!isFavorite) {
     const saveFavoriteButton = document.createElement("button");
@@ -21,15 +23,17 @@ function addCatImage(reference, sourceImage, imageId, isFavorite) {
     saveFavoriteButton.textContent = "Save cat in favorites";
     saveFavoriteButton.onclick = () => postFavorite(imageId);
 
-    catArticle.appendChild(saveFavoriteButton);
+    options.appendChild(saveFavoriteButton);
   } else {
     const removeFavoriteButton = document.createElement("button");
     removeFavoriteButton.type = "button";
     removeFavoriteButton.textContent = "Remove cat from favorites";
     removeFavoriteButton.onclick = () => removeFavorite(imageId);
 
-    catArticle.appendChild(removeFavoriteButton);
+    options.appendChild(removeFavoriteButton);
   }
+
+  catArticle.appendChild(options);
 
   reference.appendChild(catArticle);
 }
