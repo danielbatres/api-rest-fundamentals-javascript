@@ -24,6 +24,16 @@ async function postFavorite(imageId) {
   loadFavoriteCats();
 }
 
+async function removeFavorite(id) {
+  const response = await fetch(apiDeleteUrlFavorite(id), {
+    method: 'DELETE'
+  });
+
+  if (!checkResponse(response)) return;
+
+  loadFavoriteCats();
+}
+
 async function checkResponse(response) {
   let isSuccess = true;
 

@@ -26,6 +26,7 @@ function addCatImage(reference, sourceImage, imageId, isFavorite) {
     const removeFavoriteButton = document.createElement("button");
     removeFavoriteButton.type = "button";
     removeFavoriteButton.textContent = "Remove cat from favorites";
+    removeFavoriteButton.onclick = () => removeFavorite(imageId);
 
     catArticle.appendChild(removeFavoriteButton);
   }
