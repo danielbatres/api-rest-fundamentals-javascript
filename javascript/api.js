@@ -1,5 +1,10 @@
 async function fetchData(apiUrl) {
-  const response = await fetch(apiUrl);
+  const response = await fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      'X-API-KEY': API_KEY
+    }
+  });
 
   if (!checkResponse(response)) return null;
 
@@ -10,13 +15,14 @@ async function fetchData(apiUrl) {
 
 async function postFavorite(imageId) {
   const response = await fetch(API_FAVOURITES_API, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json",
+      "X-API-KEY": API_KEY,
     },
     body: JSON.stringify({
-      image_id: imageId.toString()
-    })
+      image_id: imageId.toString(),
+    }),
   });
 
   if (!checkResponse(response)) return;
@@ -25,8 +31,11 @@ async function postFavorite(imageId) {
 }
 
 async function removeFavorite(id) {
-  const response = await fetch(apiDeleteUrlFavorite(id), {
-    method: 'DELETE'
+  const response = await fetch(API_FAVOURITES_API + `/${id}`, {
+    method: "DELETE",
+    headers: {
+      "X-API-KEY": API_KEY
+    },
   });
 
   if (!checkResponse(response)) return;
