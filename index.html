@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="./styles/elements.css">
+  <link id="currentTheme" rel="stylesheet" href="./styles/lightTheme.css">
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600&display=swap" rel="stylesheet">
@@ -16,6 +19,9 @@
       <p>
         Random cat viewer, choose the image you like the most and mark it as your favorite one
       </p>
+      <button type="button" id="switchTheme">
+        <i class="fi fi-rr-swatchbook"></i> theme
+      </button>
       <section id="uploadingCat">
         <h2></h2>
         <form id="uploadingForm">
@@ -27,17 +33,16 @@
       </section>
       <span id="error"></span>
       <ul>
-        <li>
+        <li id="randomCatsNavigation">
+          <i class="fi fi-rr-gallery"></i>
           Random cats
         </li>
-        <li>
+        <li id="favoriteCatsNavigation">
+          <i class="fi fi-rr-heart"></i>
           Favorites
         </li>
       </ul>
-      <section id="randomCats">
-      </section>
-      <h2>Favorite cats</h2>
-      <section id="favoriteCats">
+      <section id="cats">
       </section>
     </div>
   </div>

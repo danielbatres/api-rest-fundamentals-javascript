@@ -1,10 +1,12 @@
+let isLightThemeColor = false;
+let isRandom = true;
+
 async function loadRandomCats() {
   const data = await fetchData(API_URL);
 
   if (data === null) return;
 
-  randomCatsReference.innerHTML = '';
-  loadData(randomCatsReference, data, false);
+  loadData(data, false);
 }
 
 async function loadFavoriteCats() {
@@ -12,8 +14,8 @@ async function loadFavoriteCats() {
 
   if (data === null) return;
 
-  favoriteCatsReference.innerHTML = '';
-  loadData(favoriteCatsReference, data, true);
+  catsReference.innerHTML = '';
+  loadData(data, true);
 }
 
 async function uploadPhoto() {
@@ -22,12 +24,59 @@ async function uploadPhoto() {
   console.log(formData.get('file'));
 }
 
+function setTheme() {
+  isLightThemeColor = !isLightThemeColor;
+
+  if (isLightThemeColor) {
+    link.href = "./styles/lightTheme.css";
+  } else {
+    link.href = "./styles/darkTheme.css";
+  }
+}
+
+async function setContent(isRandomCats, firstRender) {
+  if (isRandom === isRandomCats || isLoading) {
+    if (!firstRender) return; 
+  }
+
+  selectNavigation(isRandomCats);
+  catsReference.innerHTML = "";
+  addLoadingCards();
+
+  if (isRandomCats) {
+    await loadRandomCats();
+  } else {
+    await loadFavoriteCats();
+  }
+
+  removeLoadingCards();
+
+  isRandom = isRandomCats;
+}
+ 
+function selectNavigation(isRandomCats) {
+  randomCatsNavigation.className = "";
+  favoriteCatsNavigation.className = "";
+
+  if (isRandomCats) {
+    randomCatsNavigation.className = "selectedNavigation";
+  } else {
+    favoriteCatsNavigation.className = "selectedNavigation";
+  }
+}
+
 async function main() {
+  const switchTheme = document.getElementById('switchTheme');
+  switchTheme.onclick = () => setTheme();
+
+  setTheme();
+
   const uploadButton = document.getElementById('upload');
   uploadButton.onclick = () => uploadPhoto();
+  randomCatsNavigation.onclick = () => setContent(true, false);
+  favoriteCatsNavigation.onclick = () => setContent(false, false); 
 
-  await loadRandomCats();
-  await loadFavoriteCats();
+  await setContent(true, true);
 }
 
 main();

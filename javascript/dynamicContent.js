@@ -1,12 +1,14 @@
-function loadData(reference, data, isFavorite) {
-  for (let i = 0; i < data.length; i++) {
-    const url = reference === favoriteCatsReference ? data[i].image.url : data[i].url;
+let isLoading = true;
 
-    addCatImage(reference, url, data[i].id, isFavorite);
+function loadData(data, isFavorite) {
+  for (let i = 0; i < data.length; i++) {
+    const url = isFavorite ? data[i].image.url : data[i].url;
+
+    addCatImage(url, data[i].id, isFavorite);
   }
 }
 
-function addCatImage(reference, sourceImage, imageId, isFavorite) {
+function addCatImage(sourceImage, imageId, isFavorite) {
   const catArticle = document.createElement("article");
   const catImage = document.createElement("img");
   catImage.alt = "Random cat picture";
@@ -35,5 +37,30 @@ function addCatImage(reference, sourceImage, imageId, isFavorite) {
 
   catArticle.appendChild(options);
 
-  reference.appendChild(catArticle);
+  catsReference.appendChild(catArticle);
+}
+
+function removeLoadingCards() {
+  const loadingCards = document.querySelectorAll(".catLoading");
+
+  loadingCards.forEach(element => {
+    element.parentNode.removeChild(element);
+  });
+
+  isLoading = false;
+}
+
+function addLoadingCards() {
+  isLoading = true;
+
+  for (let i = 0; i < 10; i++) {
+    addLoadingCard();
+  }
+}
+
+function addLoadingCard() {
+  const catLoading = document.createElement('article');
+  catLoading.className = 'catLoading';
+
+  catsReference.appendChild(catLoading);
 }

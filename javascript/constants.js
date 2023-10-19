@@ -2,7 +2,11 @@ const API_KEY = "live_l0ii654AjIwmoMG0NEH0vOPDbD5FllJPEqXF8HIB8nFxMXHhoq37OXCLnk
 const BASE_API_URL = "https://api.thecatapi.com/v1/";
 const API_URL = `${BASE_API_URL}images/search?limit=18`;
 const API_FAVOURITES_API = `${BASE_API_URL}favourites`;
+const link = document.getElementById("currentTheme");
 const form = document.getElementById('uploadingForm');
-const randomCatsReference = document.getElementById("randomCats");
-const favoriteCatsReference = document.getElementById("favoriteCats");
+const catsReference = document.getElementById("cats");
 const spanError = document.getElementById("error");
+const randomCatsNavigation = document.getElementById("randomCatsNavigation");
+const favoriteCatsNavigation = document.getElementById(
+  "favoriteCatsNavigation"
+);
