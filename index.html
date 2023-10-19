@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles/styles.css">
   <link rel="stylesheet" href="./styles/elements.css">
+  <link rel="stylesheet" href="./styles/styles.css">
   <link id="currentTheme" rel="stylesheet" href="./styles/lightTheme.css">
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,9 +19,16 @@
       <p>
         Random cat viewer, choose the image you like the most and mark it as your favorite one
       </p>
-      <button type="button" id="switchTheme">
-        <i class="fi fi-rr-swatchbook"></i> theme
-      </button>
+      <div class="buttonActions">
+        <button type="button" id="switchTheme">
+          <i class="fi fi-rr-swatchbook"></i> theme
+        </button>
+        <button type="button" id="githubButton">
+          <a href="https://github.com/danielbatres/api-rest-fundamentals-javascript" target="_blank">
+            <i class="fi fi-rr-code-compare"></i> Repositorio
+          </a>
+        </button>
+      </div>
       <section id="uploadingCat">
         <h2></h2>
         <form id="uploadingForm">

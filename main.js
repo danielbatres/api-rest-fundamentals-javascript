@@ -18,12 +18,6 @@ async function loadFavoriteCats() {
   loadData(data, true);
 }
 
-async function uploadPhoto() {
-  const formData = new FormData(form);
-
-  console.log(formData.get('file'));
-}
-
 function setTheme() {
   isLightThemeColor = !isLightThemeColor;
 

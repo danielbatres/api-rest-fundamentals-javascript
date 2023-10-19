@@ -26,8 +26,6 @@ async function postFavorite(imageId) {
   });
 
   if (!checkResponse(response)) return;
-
-  loadFavoriteCats();
 }
 
 async function removeFavorite(id) {
@@ -39,8 +37,19 @@ async function removeFavorite(id) {
   });
 
   if (!checkResponse(response)) return;
+}
 
-  loadFavoriteCats();
+async function uploadPhoto() {
+  const formData = new FormData(form);
+
+  const response = await fetch(API_IMAGE_UPLOAD, {
+    method: "POST",
+    headers: {
+      'X-API-KEY': API_KEY
+    },
+    body: formData,
+  });
+
 }
 
 async function checkResponse(response) {

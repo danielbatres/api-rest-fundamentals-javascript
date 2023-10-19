@@ -30,7 +30,13 @@ function addCatImage(sourceImage, imageId, isFavorite) {
     const removeFavoriteButton = document.createElement("button");
     removeFavoriteButton.type = "button";
     removeFavoriteButton.textContent = "Remove cat from favorites";
-    removeFavoriteButton.onclick = () => removeFavorite(imageId);
+    removeFavoriteButton.onclick = () => {
+      removeFavorite(imageId);
+
+      if (!isRandom) {
+        loadFavoriteCats();
+      }
+    };
 
     options.appendChild(removeFavoriteButton);
   }
@@ -53,7 +59,7 @@ function removeLoadingCards() {
 function addLoadingCards() {
   isLoading = true;
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 20; i++) {
     addLoadingCard();
   }
 }
